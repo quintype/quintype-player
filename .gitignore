@@ -9,3 +9,4 @@
 .externalNativeBuild
 /.idea
 /camelot/build/
+/app/src/main/res/values/environment.xml
