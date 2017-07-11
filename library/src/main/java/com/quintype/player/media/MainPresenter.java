@@ -1,4 +1,4 @@
-package com.quintype.camelot.media;
+package com.quintype.player.media;
 
 
 import android.app.Application;
@@ -6,10 +6,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 
-import com.quintype.camelot.media.interactor.MainInteractor;
-import com.quintype.camelot.media.interactor.UIinteractor;
-import com.quintype.camelot.media.models.Audio;
-import com.quintype.camelot.media.utils.StorageUtil;
+import com.quintype.player.media.interactor.MainInteractor;
+import com.quintype.player.media.interactor.UIinteractor;
+import com.quintype.player.media.models.Audio;
+import com.quintype.player.media.utils.StorageUtil;
 
 import java.util.ArrayList;
 import java.util.List;

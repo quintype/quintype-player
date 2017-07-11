@@ -14,7 +14,7 @@
     >
 
         <service
-            android:name=".media.StreamService"
+            android:name="com.quintype.player.media.StreamService"
             android:enabled="true" />
     </application>
 

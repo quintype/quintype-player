@@ -1,4 +1,4 @@
-package com.quintype.camelot.media.models;
+package com.quintype.player.media.models;
 
 import java.io.Serializable;
 

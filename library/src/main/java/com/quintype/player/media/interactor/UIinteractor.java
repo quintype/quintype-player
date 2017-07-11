@@ -1,8 +1,8 @@
-package com.quintype.camelot.media.interactor;
+package com.quintype.player.media.interactor;
 
 
-import com.quintype.camelot.media.StreamService;
-import com.quintype.camelot.media.models.Audio;
+import com.quintype.player.media.StreamService;
+import com.quintype.player.media.models.Audio;
 
 public interface UIinteractor {
 

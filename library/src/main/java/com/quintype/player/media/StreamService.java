@@ -1,4 +1,4 @@
-package com.quintype.camelot.media;
+package com.quintype.player.media;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -32,9 +32,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.quintype.camelot.R;
-import com.quintype.camelot.media.models.Audio;
-import com.quintype.camelot.media.utils.MediaConstants;
-import com.quintype.camelot.media.utils.StorageUtil;
+import com.quintype.player.media.models.Audio;
+import com.quintype.player.media.utils.MediaConstants;
+import com.quintype.player.media.utils.StorageUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

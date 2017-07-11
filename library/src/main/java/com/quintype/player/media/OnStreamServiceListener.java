@@ -1,7 +1,7 @@
-package com.quintype.camelot.media;
+package com.quintype.player.media;
 
 
-import com.quintype.camelot.media.models.Audio;
+import com.quintype.player.media.models.Audio;
 
 public interface OnStreamServiceListener {
 

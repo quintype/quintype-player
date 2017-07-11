@@ -1,4 +1,4 @@
-package com.quintype.camelot.media.interactor;
+package com.quintype.player.media.interactor;
 
 import android.app.ActivityManager;
 import android.app.Application;
@@ -16,10 +16,10 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.quintype.camelot.R;
-import com.quintype.camelot.media.OnStreamServiceListener;
-import com.quintype.camelot.media.StreamService;
-import com.quintype.camelot.media.models.Audio;
-import com.quintype.camelot.media.utils.StorageUtil;
+import com.quintype.player.media.OnStreamServiceListener;
+import com.quintype.player.media.StreamService;
+import com.quintype.player.media.models.Audio;
+import com.quintype.player.media.utils.StorageUtil;
 
 import java.util.ArrayList;
 import java.util.List;

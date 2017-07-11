@@ -4,8 +4,8 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.quintype.camelot.media.MainPresenter;
-import com.quintype.camelot.media.interactor.UIinteractor;
+import com.quintype.player.media.MainPresenter;
+import com.quintype.player.media.interactor.UIinteractor;
 import com.quintype.camelotplayer.SampleApplication;
 
 /**

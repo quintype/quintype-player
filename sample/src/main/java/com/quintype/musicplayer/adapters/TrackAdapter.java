@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.quintype.camelot.media.models.Audio;
-import com.quintype.camelot.media.models.NowPlaying;
+import com.quintype.player.media.models.Audio;
+import com.quintype.player.media.models.NowPlaying;
 import com.quintype.camelotplayer.Constants;
 import com.quintype.camelotplayer.R;
 import com.quintype.camelotplayer.fragments.FragmentCallbacks;
