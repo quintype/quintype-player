@@ -7,6 +7,7 @@ android {
         applicationId "com.quintype.camelotplayer"
         minSdkVersion 19
         targetSdkVersion 26
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -27,5 +28,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:26.+'
+    compile 'com.jakewharton:butterknife:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+    compile project(path: ':library')
+    compile rootProject.ext.retrofit2
+    compile rootProject.ext.okhttp3
+    compile rootProject.ext.gsonConverter
+
     testCompile 'junit:junit:4.12'
 }

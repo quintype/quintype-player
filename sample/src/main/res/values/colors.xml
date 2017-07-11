@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background_view">#e9e8e8</color>
+    <color name="color_title">#121212</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="secondary_progress">#1Af76b1c</color>
+    <color name="progress_start_color">#fbda61</color>
+    <color name="progress_center_color">#f76b1c</color>
+    <color name="progress_end_color">#f76b1c</color>
+    <color name="progress_rim_color">#66898989</color>
 </resources>

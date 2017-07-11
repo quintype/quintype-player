@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/topContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/bottom_pannel_height"
+    android:layout_gravity="top"
+    android:background="@drawable/player_gradient_light">
+
+
+    <ProgressBar
+        android:id="@+id/song_progress_normal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:maxHeight="5dp"
+        android:progress="30"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        android:tag="tint_accent_color" />
+
+
+    <FrameLayout
+        android:id="@+id/play_button_frame"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/song_progress_normal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="8dp">
+
+
+        <ProgressBar
+            android:id="@+id/pb_playback_control"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:theme="@style/AppTheme.WhiteAccent"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/play_pause_background" />
+
+
+        <com.quintype.camelotplayer.widgets.PlayPauseButton
+            android:id="@+id/play_pause"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center" />
+
+        <View
+            android:id="@+id/play_pause_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/song_duration_remaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        android:textColor="#ffffff" />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/song_progress_normal"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/play_button_frame"
+        android:layout_toLeftOf="@id/song_duration_remaining"
+        android:layout_toRightOf="@id/play_button_frame"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="42dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="Demons"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/artist"
+            style="@style/TextAppearance.AppCompat.Widget.ActionMode.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:text="John Doe and Band"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+</RelativeLayout>

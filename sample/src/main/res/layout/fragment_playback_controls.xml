@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/quick_controls_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/blurred_album_art"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/player_gradient" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="30dp">
+
+            <TextView
+                android:id="@+id/song_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:freezesText="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="#ffffff"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/song_artist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingTop="3dp"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <SeekBar
+                android:id="@+id/song_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:maxHeight="2dp"
+                android:paddingTop="18dp"
+                android:progress="30"
+                android:tag="tint_accent_color" />
+
+
+            <TextView
+                android:id="@+id/song_album"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/song_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/song_elapsed_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:visibility="gone" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
+
+                <ImageView
+                    android:id="@+id/previous"
+                    android:layout_width="48dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="0.7"
+                    android:paddingLeft="50dp"
+                    app:srcCompat="@drawable/ic_reverse" />
+
+                <FrameLayout
+                    android:layout_width="56dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1">
+
+                    <ProgressBar
+                        android:id="@+id/pb_playback_control_expanded"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:theme="@style/AppTheme.WhiteAccent"
+                        android:visibility="gone" />
+
+                    <View
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/play_pause_background" />
+
+
+                    <com.quintype.camelotplayer.widgets.PlayPauseButton
+                        android:id="@+id/playpause"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_gravity="center" />
+
+                    <View
+                        android:id="@+id/playpausewrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/next"
+                    android:layout_width="48dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="0.7"
+                    android:paddingRight="50dp"
+                    app:srcCompat="@drawable/ic_skip_next_button" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+    <include layout="@layout/bottom_nowplaying_card" />
+
+
+</FrameLayout>
+
+
