@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">camelot</string>
+    <string name="app_name">Quintype Player</string>
     <string name="no_wifi_setting_toast">Not connected to Wifi</string>
     <string name="toast_no_wifi_but_playing">Stream stopped since you are not on WiFi</string>
     <string name="no_wifi_toast">Not connected to WiFi, be aware that this uses a LOT of data!</string>
