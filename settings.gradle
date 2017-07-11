@@ -1,1 +1,1 @@
-include ':app', ':camelot'
+include ':app', ':library'
