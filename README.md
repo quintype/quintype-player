@@ -65,7 +65,7 @@ extending this class will handle staring the `Service` then binding the service 
 License
 =======
 
-    Copyright 2013 Quintype, Inc.
+    Copyright 2017 Quintype, Inc.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
