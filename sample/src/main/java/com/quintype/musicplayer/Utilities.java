@@ -2,7 +2,7 @@ package com.quintype.camelotplayer;
 
 import android.content.Context;
 
-import com.quintype.player.media.models.Audio;
+import com.quintype.player.models.Audio;
 import com.quintype.camelotplayer.models.Track;
 
 import java.util.ArrayList;

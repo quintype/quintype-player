@@ -11,10 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.quintype.player.media.StreamService;
-import com.quintype.player.media.models.Audio;
-import com.quintype.player.media.models.NowPlaying;
-import com.quintype.player.media.utils.StorageUtil;
+import com.quintype.player.StreamService;
+import com.quintype.player.models.Audio;
+import com.quintype.player.models.NowPlaying;
+import com.quintype.player.utils.StorageUtil;
 import com.quintype.camelotplayer.Constants;
 import com.quintype.camelotplayer.R;
 import com.quintype.camelotplayer.fragments.QuickControlsFragment;

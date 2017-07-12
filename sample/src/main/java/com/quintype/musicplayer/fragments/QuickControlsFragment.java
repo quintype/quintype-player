@@ -31,7 +31,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.quintype.player.media.models.Audio;
+import com.quintype.player.models.Audio;
 import com.quintype.camelotplayer.Constants;
 import com.quintype.camelotplayer.R;
 import com.quintype.camelotplayer.Utilities;

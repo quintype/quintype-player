@@ -1,4 +1,4 @@
-package com.quintype.player.media;
+package com.quintype.player;
 
 
 import android.app.Application;
@@ -6,10 +6,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 
-import com.quintype.player.media.interactor.MainInteractor;
-import com.quintype.player.media.interactor.UIinteractor;
-import com.quintype.player.media.models.Audio;
-import com.quintype.player.media.utils.StorageUtil;
+import com.quintype.player.interactor.MainInteractor;
+import com.quintype.player.interactor.UIinteractor;
+import com.quintype.player.models.Audio;
+import com.quintype.player.utils.StorageUtil;
 
 import java.util.ArrayList;
 import java.util.List;

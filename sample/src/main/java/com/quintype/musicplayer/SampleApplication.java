@@ -2,7 +2,7 @@ package com.quintype.camelotplayer;
 
 import android.app.Application;
 
-import com.quintype.player.media.MainPresenter;
+import com.quintype.player.MainPresenter;
 import com.quintype.camelotplayer.activities.MainActivity;
 
 /**

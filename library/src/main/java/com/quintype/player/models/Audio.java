@@ -1,4 +1,4 @@
-package com.quintype.player.media.models;
+package com.quintype.player.models;
 
 import java.io.Serializable;
 /**
