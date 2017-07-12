@@ -1,4 +1,4 @@
-package com.quintype.camelot.media.utils;
+package com.quintype.player.media.utils;
 
 /**
  * Created by akshaykoul on 04/07/17.

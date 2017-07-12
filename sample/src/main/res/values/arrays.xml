@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="soundcloud_random_query">
+        <item>secret agent man</item>
+        <item>bohemian rhapsody</item>
+        <item>Adele</item>
+        <item>Fare thee well</item>
+        <item>Enrique</item>
+        <item>One Day</item>
+    </string-array>
+</resources>
