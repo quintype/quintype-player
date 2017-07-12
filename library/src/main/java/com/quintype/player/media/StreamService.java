@@ -44,8 +44,9 @@ import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
 import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
 
 /**
- * @author Akshay Koul (akoul889)
+ * Created by akshaykoul on 04/07/17.
  */
+
 public class StreamService extends Service implements
         MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
         MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener {

@@ -1,6 +1,9 @@
 package com.quintype.player.media.models;
 
 import java.io.Serializable;
+/**
+ * Created by akshaykoul on 04/07/17.
+ */
 
 public class Audio implements Serializable {
 

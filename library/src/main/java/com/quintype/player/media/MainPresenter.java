@@ -15,8 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Niels Masdorp (NielsMasdorp)
+ * Created by akshaykoul on 04/07/17.
  */
+
 public class MainPresenter implements OnStreamServiceListener {
 
     private List<UIinteractor> uIinteractors = new ArrayList<>();
