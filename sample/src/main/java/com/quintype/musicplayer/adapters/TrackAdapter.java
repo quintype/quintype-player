@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.adapters;
+package com.quintype.musicplayer.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 
 import com.quintype.player.models.Audio;
 import com.quintype.player.models.NowPlaying;
-import com.quintype.camelotplayer.Constants;
-import com.quintype.camelotplayer.R;
-import com.quintype.camelotplayer.fragments.FragmentCallbacks;
-import com.quintype.camelotplayer.models.Track;
-import com.quintype.camelotplayer.viewholders.TrackHolder;
+import com.quintype.musicplayer.Constants;
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.fragments.FragmentCallbacks;
+import com.quintype.musicplayer.models.Track;
+import com.quintype.musicplayer.viewholders.TrackHolder;
 
 import java.util.ArrayList;
 import java.util.List;

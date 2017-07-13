@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.activities;
+package com.quintype.musicplayer.activities;
 
 import android.app.FragmentManager;
 import android.os.AsyncTask;
@@ -11,15 +11,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.quintype.musicplayer.Constants;
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.fragments.QuickControlsFragment;
+import com.quintype.musicplayer.fragments.SoundcloudListFragment;
+import com.quintype.musicplayer.widgets.slidinguppanel.SlidingUpPanelLayout;
 import com.quintype.player.StreamService;
 import com.quintype.player.models.Audio;
 import com.quintype.player.models.NowPlaying;
 import com.quintype.player.utils.StorageUtil;
-import com.quintype.camelotplayer.Constants;
-import com.quintype.camelotplayer.R;
-import com.quintype.camelotplayer.fragments.QuickControlsFragment;
-import com.quintype.camelotplayer.fragments.SoundcloudListFragment;
-import com.quintype.camelotplayer.widgets.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 

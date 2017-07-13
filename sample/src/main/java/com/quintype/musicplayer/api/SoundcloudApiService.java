@@ -1,7 +1,7 @@
-package com.quintype.camelotplayer.api;
+package com.quintype.musicplayer.api;
 
 
-import com.quintype.camelotplayer.models.Track;
+import com.quintype.musicplayer.models.Track;
 
 import java.util.List;
 

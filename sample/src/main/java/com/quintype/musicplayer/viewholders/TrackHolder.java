@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.viewholders;
+package com.quintype.musicplayer.viewholders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,12 +8,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
-import com.quintype.camelotplayer.R;
-import com.quintype.camelotplayer.models.Track;
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.models.Track;
 
 import java.net.URL;
 
-import static com.quintype.camelotplayer.adapters.TrackAdapter.getHirezArtwork;
+import static com.quintype.musicplayer.adapters.TrackAdapter.getHirezArtwork;
 
 /**
  * Created by akshaykoul on 06/04/17.

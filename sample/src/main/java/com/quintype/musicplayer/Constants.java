@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer;
+package com.quintype.musicplayer;
 
 /**
  * Created by akshaykoul on 11/07/17.

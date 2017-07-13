@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.fragments;
+package com.quintype.musicplayer.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -15,11 +15,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.quintype.camelotplayer.Constants;
-import com.quintype.camelotplayer.R;
-import com.quintype.camelotplayer.adapters.TrackAdapter;
-import com.quintype.camelotplayer.api.SoundCloudApiClient;
-import com.quintype.camelotplayer.models.Track;
+import com.quintype.musicplayer.Constants;
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.adapters.TrackAdapter;
+import com.quintype.musicplayer.api.SoundCloudApiClient;
+import com.quintype.musicplayer.models.Track;
 
 import java.util.List;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.widgets;
+package com.quintype.musicplayer.widgets;
 
 import android.animation.ValueAnimator;
 import android.content.Context;

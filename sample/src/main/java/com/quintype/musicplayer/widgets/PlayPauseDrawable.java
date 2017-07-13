@@ -27,7 +27,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.quintype.camelotplayer.widgets;
+package com.quintype.musicplayer.widgets;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

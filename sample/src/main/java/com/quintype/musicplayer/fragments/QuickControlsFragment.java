@@ -13,7 +13,7 @@
  * See the GNU General Public License for more details.
  */
 
-package com.quintype.camelotplayer.fragments;
+package com.quintype.musicplayer.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -32,10 +32,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.quintype.player.models.Audio;
-import com.quintype.camelotplayer.Constants;
-import com.quintype.camelotplayer.R;
-import com.quintype.camelotplayer.Utilities;
-import com.quintype.camelotplayer.widgets.PlayPauseButton;
+import com.quintype.musicplayer.Constants;
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.Utilities;
+import com.quintype.musicplayer.widgets.PlayPauseButton;
 
 public class QuickControlsFragment extends Fragment {
 

@@ -1,12 +1,12 @@
-package com.quintype.camelotplayer.activities;
+package com.quintype.musicplayer.activities;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.quintype.camelotplayer.R;
-import com.quintype.camelotplayer.fragments.FragmentCallbacks;
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.fragments.FragmentCallbacks;
 
 import java.util.ArrayList;
 
