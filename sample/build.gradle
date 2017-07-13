@@ -36,7 +36,7 @@ dependencies {
     compile supportLibraries.design
     compile butterKnife.library
     annotationProcessor butterKnife.annotationProcessor
-    compile project(path: ':library')
+    compile project(path: ':quintype-player')
     compile networkLibraries.retrofit2
     compile networkLibraries.okhttp3
     compile networkLibraries.gsonConverter
