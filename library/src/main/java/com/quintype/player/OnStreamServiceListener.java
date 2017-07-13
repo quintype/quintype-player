@@ -1,7 +1,10 @@
-package com.quintype.player.media;
+package com.quintype.player;
 
 
-import com.quintype.player.media.models.Audio;
+import com.quintype.player.models.Audio;
+/**
+ * Created by akshaykoul on 04/07/17.
+ */
 
 public interface OnStreamServiceListener {
 

@@ -32,3 +32,30 @@ dependencies {
     compile rootProject.ext.glide
     testCompile rootProject.ext.junit
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'quintype-player'
+
+    publishedGroupId = 'com.quintype.player'
+    libraryName = 'QuintypePlayer'
+    artifact = 'quintype-player'
+
+    libraryDescription = 'A wrapper on top of MediaPlayer to help developers easily integrate a music player to their applications.'
+
+    siteUrl = 'https://github.com/quintype/quintype-player'
+    gitUrl = 'https://github.com/quintype/quintype-player.git'
+
+    libraryVersion = project.VERSION_NAME
+
+    developerId = 'akoul889'
+    developerName = 'Akshay Koul'
+    developerEmail = 'akshay@quintype.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'bintray.gradle'
+apply from: 'install.gradle'

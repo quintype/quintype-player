@@ -1,14 +1,17 @@
-package com.quintype.player.media.utils;
+package com.quintype.player.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.quintype.player.media.models.Audio;
+import com.quintype.player.models.Audio;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+/**
+ * Created by akshaykoul on 04/07/17.
+ */
 
 public class StorageUtil {
 

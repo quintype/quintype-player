@@ -1,4 +1,4 @@
-package com.quintype.player.media;
+package com.quintype.player;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -31,10 +31,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.quintype.camelot.R;
-import com.quintype.player.media.models.Audio;
-import com.quintype.player.media.utils.MediaConstants;
-import com.quintype.player.media.utils.StorageUtil;
+import com.quintype.player.models.Audio;
+import com.quintype.player.utils.MediaConstants;
+import com.quintype.player.utils.StorageUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -44,8 +43,9 @@ import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT;
 import static android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK;
 
 /**
- * @author Akshay Koul (akoul889)
+ * Created by akshaykoul on 04/07/17.
  */
+
 public class StreamService extends Service implements
         MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener,
         MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener {

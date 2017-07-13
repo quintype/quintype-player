@@ -1,0 +1,5 @@
+Quintype player
+Copyright 2017 Quintype, Inc.
+
+This product includes software developed at
+The Quintype, Inc (http://www.quintype.com/).

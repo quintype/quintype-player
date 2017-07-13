@@ -1,4 +1,4 @@
-package com.quintype.player.media.interactor;
+package com.quintype.player.interactor;
 
 import android.app.ActivityManager;
 import android.app.Application;
@@ -15,17 +15,20 @@ import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.quintype.camelot.R;
-import com.quintype.player.media.OnStreamServiceListener;
-import com.quintype.player.media.StreamService;
-import com.quintype.player.media.models.Audio;
-import com.quintype.player.media.utils.StorageUtil;
+import com.quintype.player.R;
+import com.quintype.player.OnStreamServiceListener;
+import com.quintype.player.StreamService;
+import com.quintype.player.models.Audio;
+import com.quintype.player.utils.StorageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Created by akshaykoul on 04/07/17.
+ */
 
 public class MainInteractor {
 

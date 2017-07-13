@@ -1,4 +1,4 @@
-package com.quintype.player.media.utils;
+package com.quintype.player.utils;
 
 /**
  * Created by akshaykoul on 04/07/17.
