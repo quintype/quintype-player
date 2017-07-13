@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.quintype.player.models.Audio;
-import com.quintype.player.models.NowPlaying;
 import com.quintype.musicplayer.Constants;
 import com.quintype.musicplayer.R;
 import com.quintype.musicplayer.fragments.FragmentCallbacks;
 import com.quintype.musicplayer.models.Track;
 import com.quintype.musicplayer.viewholders.TrackHolder;
+import com.quintype.player.models.Audio;
+import com.quintype.player.models.NowPlaying;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +37,10 @@ public class TrackAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        final int holderPosition = holder.getAdapterPosition();
         if (holder instanceof TrackHolder) {
-            ((TrackHolder) holder).bind(tracks.get(position));
+            ((TrackHolder) holder).bind(tracks.get(holderPosition));
             final String clientId = holder.itemView.getContext().getString(R.string
                     .soundcloud_api_key);
             ((TrackHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +48,7 @@ public class TrackAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 public void onClick(View view) {
                     fragmentCallbacks.propagateEvent(new Pair<String, Object>(Constants
                             .EVENT_TRACK_CLICK, new NowPlaying(getAudioFromTracks
-                            (tracks, clientId), position)));
+                            (tracks, clientId), holderPosition)));
                 }
             });
         }
