@@ -1,6 +1,48 @@
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
-version = libraryVersion
+group = GROUP_ID // Maven Group ID for the artifact
+version = VERSION_NAME
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                groupId GROUP_ID
+                artifactId ARTIFACT_ID
+
+                // Add your description here
+                name LIB_NAME
+                description LIB_DESC
+                url LIB_URL
+
+                // Set your license
+                licenses {
+                    license {
+                        name LICENSE_NAME
+                        url LICENSE_URL
+                    }
+                }
+                developers {
+                    developer {
+                        id DEVELOPER_ID
+                        name DEVELOPER_NAME
+                        email DEVELOPER_EMAIL
+                    }
+                }
+                scm {
+                    connection LIB_GIT_URL
+                    developerConnection LIB_GIT_URL
+                    url LIB_URL
+                }
+            }
+        }
+    }
+}
+
+
 
 if (project.hasProperty("android")) { // Android libraries
     task sourcesJar(type: Jar) {
@@ -25,7 +67,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives javadocJar
+    //archives javadocJar
     archives sourcesJar
 }
 
@@ -34,26 +76,25 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = properties.getProperty("bintray.user") //add bintrayUser property to local.properties
+    // in root project
+    key = properties.getProperty("bintray.apikey") //add bintrayApiKey property to local
+    // .properties in root project
 
     configurations = ['archives']
     pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        desc = libraryDescription
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = allLicenses
+        repo = 'android'
+        name = LIB_NAME
+        desc = LIB_DES
+        websiteUrl = LIB_URL
+        vcsUrl = LIB_GIT_URL
+        licenses = ['Apache-2.0']
+        userOrg = USER_ORG
         publish = true
+        labels = ['aar', 'android', 'quintype']
         publicDownloadNumbers = true
         version {
-            desc = libraryDescription
-            gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
-                passphrase = properties.getProperty("bintray.gpg.password")
-                //Optional. The passphrase for GPG signing'
-            }
+            desc = LIB_DESC
         }
     }
 }
