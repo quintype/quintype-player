@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.api;
+package com.quintype.musicplayer.api;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -7,9 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SoundCloudApiClient {
 
     private static final String TAG = SoundCloudApiClient.class.getName();
-    private static SoundcloudApiService soundcloudApiService;
+    private static com.quintype.musicplayer.api.SoundcloudApiService soundcloudApiService;
 
-    public static SoundcloudApiService getApiService() {
+    public static com.quintype.musicplayer.api.SoundcloudApiService getApiService() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -23,7 +23,7 @@ public class SoundCloudApiClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();
-        soundcloudApiService = retrofit.create(SoundcloudApiService.class);
+        soundcloudApiService = retrofit.create(com.quintype.musicplayer.api.SoundcloudApiService.class);
         return soundcloudApiService;
     }
 }

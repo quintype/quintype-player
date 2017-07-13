@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.widgets.slidinguppanel;
+package com.quintype.musicplayer.widgets.slidinguppanel;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,7 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
-import com.quintype.camelotplayer.R;
+import com.quintype.musicplayer.R;
 
 
 public class SlidingUpPanelLayout extends ViewGroup {

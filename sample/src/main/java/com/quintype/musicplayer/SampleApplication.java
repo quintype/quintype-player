@@ -1,9 +1,9 @@
-package com.quintype.camelotplayer;
+package com.quintype.musicplayer;
 
 import android.app.Application;
 
 import com.quintype.player.MainPresenter;
-import com.quintype.camelotplayer.activities.MainActivity;
+import com.quintype.musicplayer.activities.MainActivity;
 
 /**
  * Created by akshaykoul on 11/07/17.

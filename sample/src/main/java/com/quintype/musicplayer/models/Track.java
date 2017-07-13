@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.models;
+package com.quintype.musicplayer.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -127,7 +127,7 @@ public class Track {
     private Object trackType;
     @SerializedName("user")
     @Expose
-    private User user;
+    private com.quintype.musicplayer.models.User user;
     @SerializedName("likes_count")
     @Expose
     private int likesCount;
@@ -473,11 +473,11 @@ public class Track {
         this.trackType = trackType;
     }
 
-    public User getUser() {
+    public com.quintype.musicplayer.models.User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(com.quintype.musicplayer.models.User user) {
         this.user = user;
     }
 

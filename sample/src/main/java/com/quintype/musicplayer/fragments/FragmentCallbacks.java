@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.fragments;
+package com.quintype.musicplayer.fragments;
 
 import android.app.Fragment;
 import android.util.Pair;

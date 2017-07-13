@@ -1,9 +1,10 @@
-package com.quintype.camelotplayer;
+package com.quintype.musicplayer;
 
 import android.content.Context;
 
+import com.quintype.musicplayer.R;
+import com.quintype.musicplayer.models.Track;
 import com.quintype.player.models.Audio;
-import com.quintype.camelotplayer.models.Track;
 
 import java.util.ArrayList;
 import java.util.List;

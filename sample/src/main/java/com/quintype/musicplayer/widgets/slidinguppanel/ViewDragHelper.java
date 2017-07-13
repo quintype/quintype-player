@@ -15,7 +15,7 @@
  */
 
 
-package com.quintype.camelotplayer.widgets.slidinguppanel;
+package com.quintype.musicplayer.widgets.slidinguppanel;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;

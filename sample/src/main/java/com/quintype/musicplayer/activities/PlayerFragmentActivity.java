@@ -1,4 +1,4 @@
-package com.quintype.camelotplayer.activities;
+package com.quintype.musicplayer.activities;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.quintype.player.MainPresenter;
 import com.quintype.player.interactor.UIinteractor;
-import com.quintype.camelotplayer.SampleApplication;
+import com.quintype.musicplayer.SampleApplication;
 
 /**
  * Created by akshaykoul on 16/04/17.
