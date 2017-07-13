@@ -85,7 +85,7 @@ bintray {
     pkg {
         repo = 'android'
         name = LIB_NAME
-        desc = LIB_DES
+        desc = LIB_DESC
         websiteUrl = LIB_URL
         vcsUrl = LIB_GIT_URL
         licenses = ['Apache-2.0']
