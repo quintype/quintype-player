@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.quintype.camelotplayer.widgets.slidinguppanel.SlidingUpPanelLayout
+<com.quintype.musicplayer.widgets.slidinguppanel.SlidingUpPanelLayout
     android:id="@+id/sliding_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
@@ -28,4 +28,4 @@
         android:visibility="invisible">
     </FrameLayout>
 
-</com.quintype.camelotplayer.widgets.slidinguppanel.SlidingUpPanelLayout>
+</com.quintype.musicplayer.widgets.slidinguppanel.SlidingUpPanelLayout>
