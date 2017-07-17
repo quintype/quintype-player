@@ -129,7 +129,7 @@
                         android:background="@drawable/play_pause_background" />
 
 
-                    <com.quintype.camelotplayer.widgets.PlayPauseButton
+                    <com.quintype.musicplayer.widgets.PlayPauseButton
                         android:id="@+id/playpause"
                         android:layout_width="21dp"
                         android:layout_height="21dp"
