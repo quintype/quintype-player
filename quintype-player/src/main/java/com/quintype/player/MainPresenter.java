@@ -100,6 +100,7 @@ public class MainPresenter implements OnStreamServiceListener {
         interactor.setStreamWifiOnly(checked);
     }
 
+    @Override
     public void streamStopped() {
 
         for (UIinteractor view : uIinteractors) {
