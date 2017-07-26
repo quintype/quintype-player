@@ -284,7 +284,7 @@ public class QuickControlsFragment extends Fragment {
         updateState(isPlaying);
     }
 
-    public void setLoading() {
+    public void startBuffering() {
 
         streamProgress.setVisibility(View.VISIBLE);
         streamProgressExpanded.setVisibility(View.VISIBLE);
@@ -306,7 +306,7 @@ public class QuickControlsFragment extends Fragment {
         updateState(true);
     }
 
-    public void setToStopped() {
+    public void stopBuffering() {
 
         stopLoading();
         updateState(false);
