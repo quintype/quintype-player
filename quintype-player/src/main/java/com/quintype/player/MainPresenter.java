@@ -100,11 +100,12 @@ public class MainPresenter implements OnStreamServiceListener {
         interactor.setStreamWifiOnly(checked);
     }
 
+    @Override
     public void streamStopped() {
 
         for (UIinteractor view : uIinteractors) {
 
-            view.setToStopped();
+            view.bufferingStopped();
         }
     }
 
@@ -144,7 +145,7 @@ public class MainPresenter implements OnStreamServiceListener {
     public void setLoading() {
         for (UIinteractor view : uIinteractors) {
 
-            view.setLoading();
+            view.setBuffering();
         }
     }
 

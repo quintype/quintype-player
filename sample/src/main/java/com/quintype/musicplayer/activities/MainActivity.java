@@ -91,13 +91,13 @@ public class MainActivity extends PlayerFragmentActivity {
     }
 
     @Override
-    public void setLoading() {
-        quickControlsFragment.setLoading();
+    public void setBuffering() {
+        quickControlsFragment.startBuffering();
     }
 
     @Override
-    public void setToStopped() {
-        quickControlsFragment.setToStopped();
+    public void bufferingStopped() {
+        quickControlsFragment.stopBuffering();
     }
 
     @Override

@@ -11,9 +11,9 @@ public interface UIinteractor {
 
     void initializeUI(Audio stream, boolean isPlaying);
 
-    void setLoading();
+    void setBuffering();
 
-    void setToStopped();
+    void bufferingStopped();
 
     void setToPlaying();
 

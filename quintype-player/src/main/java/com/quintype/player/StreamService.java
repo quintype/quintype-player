@@ -1,6 +1,7 @@
 package com.quintype.player;
 
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -9,11 +10,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.session.MediaSessionManager;
 import android.net.Uri;
 import android.os.Binder;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
@@ -92,7 +95,7 @@ public class StreamService extends Service implements
     private CountDownTimer countDownTimer;
     StreamUpdatedListener streamUpdatedListener;
     private static final int STOP_DELAY = 30000;
-    boolean isUIUnbinded = false;
+//    boolean isUIUnbinded = false;
 
     HeadphonesStateReceiver headphoneStateReceiver;
     private StorageUtil storageUtil;
@@ -107,7 +110,14 @@ public class StreamService extends Service implements
 
         storageUtil = new StorageUtil(getApplicationContext());
         player = new MediaPlayer();
-        player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // only for lollipop and newer versions
+            player.setAudioAttributes(new AudioAttributes.Builder()
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .setUsage(AudioAttributes.USAGE_MEDIA).build());
+        } else {
+            player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        }
         player.setOnPreparedListener(this);
         player.setOnCompletionListener(this);
         player.setOnErrorListener(this);
@@ -132,23 +142,23 @@ public class StreamService extends Service implements
     @Override
     public IBinder onBind(Intent intent) {
         toBackground(true);
-        isUIUnbinded = false;
+//        isUIUnbinded = false;
         return streamBinder;
     }
 
     @Override
     public void onRebind(Intent intent) {
         toBackground(true);
-        isUIUnbinded = false;
+//        isUIUnbinded = false;
         super.onRebind(intent);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        if (player.isPlaying() || state == State.PREPARING) {
-            toForeground();
-        }
-        isUIUnbinded = true;
+//        if (player.isPlaying() || state == State.PREPARING) {
+//            toForeground();
+//        }
+//        isUIUnbinded = true;
         return true;
     }
 
@@ -181,7 +191,7 @@ public class StreamService extends Service implements
     }
 
 
-    public void toForeground() {
+    public void showNotification() {
 
         int notificationAction = android.R.drawable.ic_media_pause;//needs to be initialized
         PendingIntent play_pauseAction = null;
@@ -260,11 +270,11 @@ public class StreamService extends Service implements
                     .into(new SimpleTarget<Bitmap>() {
                         @Override
                         public void onResourceReady(Bitmap resource, GlideAnimation<? super
-                                                        Bitmap> glideAnimation) {
+                                Bitmap> glideAnimation) {
                             notificationBuilder.setLargeIcon(resource);
                             Notification notification = notificationBuilder.build();
                             startForeground(MediaConstants.MEDIA_NOTIFY_ID, notification);
-                            if (state != State.PLAYING) {
+                            if (state == State.PAUSED) {
                                 toBackground(false);
                             }
                         }
@@ -348,6 +358,7 @@ public class StreamService extends Service implements
             Log.e(TAG, "playStream: ", e);
         }
         player.prepareAsync();
+        showNotification();
     }
 
     public void pauseStream() {
@@ -362,30 +373,40 @@ public class StreamService extends Service implements
         }
 
         streamUpdatedListener.playerStateUpdated(state);
-        if (isUIUnbinded) {
-            toForeground();
-            toBackground(false);
-        }
+//        if (isUIUnbinded) {
+        showNotification();
+//        toForeground();
+        toBackground(false);
+//        }
     }
 
     public void resumeStream() {
+        try {
+            if (state == State.PAUSED) {
 
-        if (state == State.PAUSED) {
+                mDelayedStopHandler.removeCallbacksAndMessages(null);
+                player.start();
+                state = State.PLAYING;
+            }
 
-            mDelayedStopHandler.removeCallbacksAndMessages(null);
-            player.start();
-            state = State.PLAYING;
-        }
+            streamUpdatedListener.playerStateUpdated(state);
+//        if (isUIUnbinded) {
+//        toForeground();
+//        }
 
-        streamUpdatedListener.playerStateUpdated(state);
-        if (isUIUnbinded) {
-            toForeground();
+            showNotification();
+        } catch (NullPointerException | IllegalStateException e) {
+            e.printStackTrace();
+            NotificationManager notificationManager = (NotificationManager) getApplicationContext
+                    ().getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(MediaConstants.MEDIA_NOTIFY_ID);
         }
     }
 
     /**
      * Stop the MediaPlayer if something is streaming
      */
+
     public void stopStreaming() {
 
         if (state == State.PLAYING || state == State.PAUSED) {
@@ -616,17 +637,7 @@ public class StreamService extends Service implements
             @Override
             public void onSkipToPrevious() {
                 super.onSkipToPrevious();
-                if (nowPlayingPosition != 0) {
-                    updateCurrentlyPlaying(nowPlayingPosition - 1);
-                } else {
-                    updateCurrentlyPlaying(nowPlayingList.size() - 1);
-                }
-
-                if (state == StreamService.State.PLAYING || state == StreamService.State.PAUSED) {
-                    stopStreaming();
-                    playStream();
-                    toForeground();
-                }
+                playPreviousStream();
             }
 
             @Override
@@ -644,19 +655,49 @@ public class StreamService extends Service implements
     }
 
     private void playNextStream() {
-        if (nowPlayingPosition != (nowPlayingList.size() - 1)) {
-            updateCurrentlyPlaying(nowPlayingPosition + 1);
-        } else {
-            updateCurrentlyPlaying(0);
-        }
-
-        if (state == StreamService.State.PLAYING || state
-                == StreamService.State.PAUSED) {
-            stopStreaming();
-            playStream();
-            if (isUIUnbinded) {
-                toForeground();
+        try {
+            if (nowPlayingPosition != (nowPlayingList.size() - 1)) {
+                updateCurrentlyPlaying(nowPlayingPosition + 1);
+            } else {
+                updateCurrentlyPlaying(0);
             }
+
+            if (state == State.PLAYING || state
+                    == State.PAUSED) {
+                stopStreaming();
+                playStream();
+                //            if (isUIUnbinded) {
+                //                toForeground();
+                //            }
+                showNotification();
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            NotificationManager notificationManager = (NotificationManager) getApplicationContext
+                    ().getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(MediaConstants.MEDIA_NOTIFY_ID);
+        }
+    }
+
+    private void playPreviousStream() {
+        try {
+            if (nowPlayingPosition != 0) {
+                updateCurrentlyPlaying(nowPlayingPosition - 1);
+            } else {
+                updateCurrentlyPlaying(nowPlayingList.size() - 1);
+            }
+
+            if (state == State.PLAYING || state == State.PAUSED) {
+                stopStreaming();
+                playStream();
+                //                    toForeground();
+                showNotification();
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            NotificationManager notificationManager = (NotificationManager) getApplicationContext
+                    ().getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.cancel(MediaConstants.MEDIA_NOTIFY_ID);
         }
     }
 
