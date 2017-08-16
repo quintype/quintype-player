@@ -198,6 +198,10 @@ public class MainPresenter implements OnStreamServiceListener {
         return interactor.getCurrentMediaPosition();
     }
 
+    public Audio getCurrentStream() {
+        return interactor.getCurrentStream();
+    }
+
 
     public boolean isInitialized() {
         return interactor.isInitialized();

@@ -425,6 +425,10 @@ public class MainInteractor {
         return streamService.getCurrentStreamPosition();
     }
 
+    public Audio getCurrentStream() {
+        return streamService.getCurrentStream();
+    }
+
     /**
      * Check if the player is in playing state
      */
