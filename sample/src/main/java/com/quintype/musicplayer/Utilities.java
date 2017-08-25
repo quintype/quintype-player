@@ -2,7 +2,6 @@ package com.quintype.musicplayer;
 
 import android.content.Context;
 
-import com.quintype.musicplayer.R;
 import com.quintype.musicplayer.models.Track;
 import com.quintype.player.models.Audio;
 
@@ -24,7 +23,7 @@ public class Utilities {
                     .getDescription(),
                     track.getTitle(), track.getGenre(), track.getUser().getUsername(),
                     getHirezArtwork(track.getArtworkUrl()), track.getStreamUrl() + "?client_id="
-                    + clientId);
+                    + clientId, false);
             adioList.add(audio);
         }
         return adioList;

@@ -123,7 +123,7 @@ public class MainInteractor {
                 if (connectedToWifi || !isStreamWifiOnly()) {
 //                    streamService.playStream(currentStream);
                     streamService.playStream();
-                    presenter.setLoading();
+                    presenter.setBuffering();
                     if (!connectedToWifi) {
                         presenter.error(application.getString(R.string.no_wifi_toast));
                     }
