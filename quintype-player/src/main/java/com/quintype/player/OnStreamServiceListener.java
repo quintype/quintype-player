@@ -16,7 +16,7 @@ public interface OnStreamServiceListener {
 
     void restoreUI(Audio stream, boolean isPlaying);
 
-    void setLoading();
+    void setBuffering();
 
     void streamPlaying();
 

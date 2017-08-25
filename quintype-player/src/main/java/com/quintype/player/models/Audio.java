@@ -1,6 +1,7 @@
 package com.quintype.player.models;
 
 import java.io.Serializable;
+
 /**
  * Created by akshaykoul on 04/07/17.
  */
@@ -16,9 +17,10 @@ public class Audio implements Serializable {
     private String artist;
     private String artwork;
     private String streamUrl;
+    private boolean isDownloaded;
 
     public Audio(int id, int duration, String data, String title, String genre, String artist,
-                 String artwork, String streamUrl) {
+                 String artwork, String streamUrl, boolean isDownloaded) {
         this.id = id;
         this.data = data;
         this.genre = genre;
@@ -27,6 +29,7 @@ public class Audio implements Serializable {
         this.artwork = artwork;
         this.duration = duration;
         this.streamUrl = streamUrl;
+        this.isDownloaded = isDownloaded;
     }
 
     public String getData() {
@@ -91,5 +94,13 @@ public class Audio implements Serializable {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public boolean isDownloaded() {
+        return isDownloaded;
+    }
+
+    public void setDownloaded(boolean downloaded) {
+        isDownloaded = downloaded;
     }
 }

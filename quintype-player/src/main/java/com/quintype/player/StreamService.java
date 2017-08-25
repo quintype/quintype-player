@@ -105,7 +105,6 @@ public class StreamService extends Service implements
         try {
             initMediaSession();
         } catch (RemoteException e) {
-            Log.e(TAG, "RemoteException", e);
         }
 
         storageUtil = new StorageUtil(getApplicationContext());
@@ -117,6 +116,7 @@ public class StreamService extends Service implements
                     .setUsage(AudioAttributes.USAGE_MEDIA).build());
         } else {
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
         }
         player.setOnPreparedListener(this);
         player.setOnCompletionListener(this);
@@ -141,23 +141,23 @@ public class StreamService extends Service implements
 
     @Override
     public IBinder onBind(Intent intent) {
-        toBackground(true);
+//        toBackground(false);
 //        isUIUnbinded = false;
         return streamBinder;
     }
 
     @Override
     public void onRebind(Intent intent) {
-        toBackground(true);
+//        toBackground(true);
 //        isUIUnbinded = false;
         super.onRebind(intent);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-//        if (player.isPlaying() || state == State.PREPARING) {
+        if (player.isPlaying() || state == State.PREPARING) {
 //            toForeground();
-//        }
+        }
 //        isUIUnbinded = true;
         return true;
     }
@@ -375,12 +375,13 @@ public class StreamService extends Service implements
         streamUpdatedListener.playerStateUpdated(state);
 //        if (isUIUnbinded) {
         showNotification();
-//        toForeground();
+//            toForeground();
         toBackground(false);
 //        }
     }
 
     public void resumeStream() {
+
         try {
             if (state == State.PAUSED) {
 
@@ -391,9 +392,8 @@ public class StreamService extends Service implements
 
             streamUpdatedListener.playerStateUpdated(state);
 //        if (isUIUnbinded) {
-//        toForeground();
+//            toForeground();
 //        }
-
             showNotification();
         } catch (NullPointerException | IllegalStateException e) {
             e.printStackTrace();
@@ -406,7 +406,6 @@ public class StreamService extends Service implements
     /**
      * Stop the MediaPlayer if something is streaming
      */
-
     public void stopStreaming() {
 
         if (state == State.PLAYING || state == State.PAUSED) {
@@ -443,6 +442,19 @@ public class StreamService extends Service implements
             return player.getCurrentPosition();
         }
         return 0;
+    }
+
+    /**
+     * Get currently playing stream Audio
+     *
+     * @return Audio
+     */
+    public Audio getCurrentStream() {
+
+        if (state == State.PLAYING || state == State.PAUSED) {
+            return currentStream;
+        }
+        return null;
     }
 
     /**
@@ -505,7 +517,7 @@ public class StreamService extends Service implements
     }
 
     private void timerDoneBroadcast() {
-        Log.i(TAG, "setSleepTimer: sleep timer is done, notifying bindings.");
+//        setSleepTimer: sleep timer is done, notifying bindings.
 
         Intent intent = new Intent(TIMER_DONE_INTENT);
         broadcastManager.sendBroadcast(intent);
@@ -751,10 +763,10 @@ public class StreamService extends Service implements
             StreamService service = mWeakReference.get();
             if (service != null && service.player != null) {
                 if (service.player.isPlaying() || service.state == State.PLAYING) {
-                    Log.d(TAG, "Ignoring delayed stop since the media player is in use.");
+//                    Ignoring delayed stop since the media player is in use.
                     return;
                 }
-                Log.d(TAG, "Stopping service with delay handler.");
+//                Stopping service with delay handler.
                 service.stopSelf();
             }
         }
@@ -798,17 +810,19 @@ public class StreamService extends Service implements
                 int headsetState = intent.getIntExtra("state", -1);
                 switch (headsetState) {
                     case 0:
+//                        Headset is unplugged
                         if (state == State.PLAYING) {
                             pauseStream();
                         }
                         break;
                     case 1:
+//                       Headset is plugged
                         if (state == State.PAUSED) {
                             resumeStream();
                         }
                         break;
                     default:
-                        Log.d(TAG, "I have no idea what the headset state is");
+//                        I have no idea what the headset state is
                 }
             }
         }

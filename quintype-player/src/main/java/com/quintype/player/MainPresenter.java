@@ -142,7 +142,7 @@ public class MainPresenter implements OnStreamServiceListener {
         }
     }
 
-    public void setLoading() {
+    public void setBuffering() {
         for (UIinteractor view : uIinteractors) {
 
             view.setBuffering();
@@ -196,6 +196,10 @@ public class MainPresenter implements OnStreamServiceListener {
 
     public int getCurrentMediaPosition() {
         return interactor.getCurrentMediaPosition();
+    }
+
+    public Audio getCurrentStream() {
+        return interactor.getCurrentStream();
     }
 
 

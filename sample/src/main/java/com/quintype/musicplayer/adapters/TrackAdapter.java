@@ -79,7 +79,7 @@ public class TrackAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     .getDescription(),
                     track.getTitle(), track.getGenre(), track.getUser().getUsername(),
                     getHirezArtwork(track.getArtworkUrl()), track.getStreamUrl() + "?client_id="
-                    + clientId);
+                    + clientId, false);
             adioList.add(audio);
         }
         return adioList;
