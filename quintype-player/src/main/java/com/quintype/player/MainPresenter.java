@@ -164,7 +164,7 @@ public class MainPresenter implements OnStreamServiceListener {
         }
     }
 
-    private void updatePlaylist(ArrayList<Audio> streams, StorageUtil storage) {
+    public void updatePlaylist(ArrayList<Audio> streams, StorageUtil storage) {
         storage.storeAudio(streams);
         interactor.updatePlaylist(streams);
     }
