@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -38,6 +39,9 @@ import com.quintype.player.models.Audio;
 import com.quintype.player.utils.MediaConstants;
 import com.quintype.player.utils.StorageUtil;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -348,7 +352,21 @@ public class StreamService extends Service implements
 //            List<String> keys = Arrays.asList(getResources().getStringArray(R.array.api_keys));
 //            String key = keys.get((new Random()).nextInt(keys.size()));
 
-            player.setDataSource(this, Uri.parse(stream.getStreamUrl()));
+            if (stream.isDownloaded()) {
+                /*The audio file is downloaded, hence the data source should be the file descriptor of the downloaded file */
+                String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + this.getPackageName() + "/" + stream.getId() + MediaConstants.MP3_EXTENSION;
+
+                File downloadedFile = new File(filePath);
+                Log.d("## filePath", downloadedFile.getPath());
+                FileInputStream fileInputStream = new FileInputStream(downloadedFile);
+                player.setDataSource(fileInputStream.getFD());
+                fileInputStream.close();
+            } else {
+                /* Audio file not available in local storage, */
+                player.setDataSource(this, Uri.parse(stream.getStreamUrl()));
+            }
+
+
 //            player.setDataSource(this, Uri.parse(String.format("%s?client_id=%s", stream
 //                    .getStreamUrl(), getString(R.string.soundcloud_client_id))));
             player.setLooping(false);
