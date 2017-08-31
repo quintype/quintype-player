@@ -15,6 +15,7 @@
 
 package com.quintype.musicplayer.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
@@ -339,16 +340,16 @@ public class QuickControlsFragment extends Fragment {
 //        showSoundsButton.setEnabled(true);
     }
 
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentCallbacks) {
-            callbacks = (FragmentCallbacks) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof FragmentCallbacks) {
+            callbacks = (FragmentCallbacks) activity;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(activity.toString()
                     + " must implement MusicFragmentCallbacks");
         }
+
     }
 
     @Override

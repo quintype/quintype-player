@@ -11,4 +11,6 @@ public class MediaConstants {
     public static final int MEDIA_NOTIFICATION_REQUEST_CODE = 402;
 
     public static final int MEDIA_NOTIFY_ID = 11;
+
+    public static final String MP3_EXTENSION = ".mp3";
 }
