@@ -1,5 +1,6 @@
 package com.quintype.musicplayer.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -93,7 +94,7 @@ public class SoundcloudListFragment extends Fragment {
         String[] querylist = getResources().getStringArray(R.array.soundcloud_random_query);
         Random random = new Random();
         int pos = random.nextInt(querylist.length);
-        Log.d(TAG,"Making the Call");
+        Log.d(TAG, "Making the Call");
         SoundCloudApiClient.getApiService().searchTracks(querylist[pos], getString(R.string
                 .soundcloud_api_key)).enqueue(new Callback<List<Track>>() {
             @Override
@@ -105,14 +106,14 @@ public class SoundcloudListFragment extends Fragment {
                     callbacks.propagateEvent(new Pair<String, Object>(Constants
                             .EVENT_UPDATE_PLAYLIST, response.body()));
                 } else {
-                    Log.d(TAG,"Call failure");
+                    Log.d(TAG, "Call failure");
                 }
             }
 
             @Override
             public void onFailure(Call<List<Track>> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Log.d(TAG,"Call failure");
+                Log.d(TAG, "Call failure");
             }
         });
     }
@@ -124,12 +125,12 @@ public class SoundcloudListFragment extends Fragment {
 //    }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentCallbacks) {
-            callbacks = (FragmentCallbacks) context;
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof FragmentCallbacks) {
+            callbacks = (FragmentCallbacks) activity;
         } else {
-            throw new RuntimeException(context.toString()
+            throw new RuntimeException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }
