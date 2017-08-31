@@ -352,7 +352,7 @@ public class StreamService extends Service implements
 //            List<String> keys = Arrays.asList(getResources().getStringArray(R.array.api_keys));
 //            String key = keys.get((new Random()).nextInt(keys.size()));
 
-            if (!stream.isDownloaded()) {
+            if (stream.isDownloaded()) {
                 /*The audio file is downloaded, hence the data source should be the file descriptor of the downloaded file */
                 String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + this.getPackageName() + "/" + stream.getId() + MediaConstants.MP3_EXTENSION;
 
