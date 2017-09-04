@@ -2,17 +2,22 @@ package com.quintype.player;
 
 
 import android.app.Application;
+import android.app.DownloadManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 
 import com.quintype.player.interactor.MainInteractor;
 import com.quintype.player.interactor.UIinteractor;
 import com.quintype.player.models.Audio;
+import com.quintype.player.utils.MediaConstants;
 import com.quintype.player.utils.StorageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.DOWNLOAD_SERVICE;
 
 /**
  * Created by akshaykoul on 04/07/17.
@@ -247,5 +252,15 @@ public class MainPresenter implements OnStreamServiceListener {
                 application.getSystemService(Context.CONNECTIVITY_SERVICE), new StorageUtil
                 (application.getApplicationContext()), cls);
         return new MainPresenter(interactor);
+    }
+
+    /**
+     * To download the podcast
+     *
+     * @param streamURL URL of the podcast tobe downloaded
+     * @param trackID   Id of the podcast tobe downloaded
+     */
+    public void downloadPodcast(String streamURL, Integer trackID) {
+        interactor.downloadPodcast(streamURL, trackID);
     }
 }

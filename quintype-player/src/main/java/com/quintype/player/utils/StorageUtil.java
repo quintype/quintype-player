@@ -25,8 +25,6 @@ public class StorageUtil {
     private SharedPreferences preferences;
     private Context context;
 
-    //private HashMap<Long, Integer> downloadManagerDownloadHistory;
-
     public final String DOWNLOADED_PODCAST_ID_LIST = "downloadedPodcastIDList";
     public final String DOWNLOAD_MANAGER_HISTORY_LIST = "downloadManagerHistory";
     public final String AUDIO_ARRAY_LIST = "audioArrayList";
@@ -74,11 +72,26 @@ public class StorageUtil {
         editor.commit();
     }
 
+    /**
+     * Delete the downloaded file from the local storage
+     *
+     * @param downloadLocation Application package name by default
+     * @param fileName         ID of the audio object to be deleted
+     * @return
+     */
     public Boolean deleteFile(String downloadLocation, int fileName) {
         File extStore = Environment.getExternalStorageDirectory();
         File myFile = new File(extStore.getAbsolutePath() + "/" + downloadLocation + "/" + fileName + MediaConstants.MP3_EXTENSION);
         return myFile.delete();
     }
+
+    /**
+     * Check for the file in the local storage
+     *
+     * @param downloadLocation Application package name by default
+     * @param fileName         ID of the audio object to be deleted
+     * @return
+     */
 
     public Boolean checkIfFileExists(String downloadLocation, int fileName) {
         Boolean isFileAvailable = false;
@@ -118,10 +131,15 @@ public class StorageUtil {
         return isFileAvailable;
     }
 
+    /**
+     * Checks the list of downloaded trackIDs and returns the boolean value.
+     *
+     * @param fileName ID of the Audio object
+     * @return
+     */
     private Boolean checkDownloadedPodcastList(int fileName) {
         Boolean isaudioIDAvailable = false;
         ArrayList<Integer> downloadedPodcast = getDownloadedPodcast();
-    /*The download list is not empty, i.e the user have a download history. Its enough to check the array list alone.*/
         for (int i = 0; i < downloadedPodcast.size(); i++) {
             if (downloadedPodcast.get(i).equals(fileName)) {
                 isaudioIDAvailable = true;
@@ -133,6 +151,11 @@ public class StorageUtil {
         return isaudioIDAvailable;
     }
 
+    /**
+     * Which gives us the list of downloaded trackIDs
+     *
+     * @return
+     */
     public ArrayList<Integer> getDownloadedPodcast() {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -142,13 +165,16 @@ public class StorageUtil {
         return gson.fromJson(json, type);
     }
 
-    public void addToDownloadedPodcast(Integer audioID) {
+    /**
+     * @param trackID Id of the downloaded podcast
+     */
+    public void addToDownloadedPodcast(Integer trackID) {
         ArrayList<Integer> downloadedPodcast = getDownloadedPodcast();
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if (downloadedPodcast.contains(audioID)) {
-            downloadedPodcast.add(audioID);
+        if (downloadedPodcast.contains(trackID)) {
+            downloadedPodcast.add(trackID);
             Gson gson = new Gson();
             String json = gson.toJson(downloadedPodcast);
             editor.putString(DOWNLOADED_PODCAST_ID_LIST, json);
@@ -156,11 +182,14 @@ public class StorageUtil {
         }
     }
 
-    public void removeFromDownloadedPodcastList(Integer audioID) {
+    /**
+     * @param trackID Id of the downloaded podcast
+     */
+    public void removeFromDownloadedPodcastList(Integer trackID) {
         ArrayList<Integer> downloadedPodcast = getDownloadedPodcast();
         SharedPreferences.Editor editor = preferences.edit();
-        if (downloadedPodcast.contains(audioID)) {
-            downloadedPodcast.remove(audioID);
+        if (downloadedPodcast.contains(trackID)) {
+            downloadedPodcast.remove(trackID);
             Gson gson = new Gson();
             String json = gson.toJson(downloadedPodcast);
             editor.putString(DOWNLOADED_PODCAST_ID_LIST, json);
@@ -168,6 +197,12 @@ public class StorageUtil {
         }
     }
 
+    /**
+     * We will be getting only the downloadID from the Intent of the broadcast receiver,
+     * so to confirm which track is being downloaded we need this HashMap
+     *
+     * @return
+     */
     public HashMap<Long, Integer> getDownloadManagerHistory() {
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -178,9 +213,14 @@ public class StorageUtil {
 
     }
 
-    public void addToDownloadManagerDownloadHistory(Long downloadID, Integer audioID) {
+    /**
+     * @param downloadID "downloadManager.enqueue(downloadManagerRequest)"
+     * @param trackID    Id of the podcast to be downloaded
+     */
+
+    public void addToDownloadManagerHistory(Long downloadID, Integer trackID) {
         HashMap<Long, Integer> downloadManagerHistory = getDownloadManagerHistory();
-        downloadManagerHistory.put(downloadID, audioID);
+        downloadManagerHistory.put(downloadID, trackID);
 
         preferences = context.getSharedPreferences(STORAGE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -191,16 +231,22 @@ public class StorageUtil {
         editor.apply();
     }
 
-    public Integer getAudioID(Long downloadedId) {
-        Integer audioID = null;
+    /**
+     * To get the audio ID from the downloadManager history HashMap
+     *
+     * @param downloadId
+     * @return
+     */
+    public Integer getAudioID(Long downloadId) {
+        Integer trackID = null;
         Iterator it = getDownloadManagerHistory().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
-            if (pair.getKey().equals(downloadedId)) {
-                audioID = (Integer) pair.getValue();
+            if (pair.getKey().equals(downloadId)) {
+                trackID = (Integer) pair.getValue();
             }
         }
-        return audioID;
+        return trackID;
     }
 
 }

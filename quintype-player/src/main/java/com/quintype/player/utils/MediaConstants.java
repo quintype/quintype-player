@@ -13,4 +13,7 @@ public class MediaConstants {
     public static final int MEDIA_NOTIFY_ID = 11;
 
     public static final String MP3_EXTENSION = ".mp3";
+
+    public static final String DOWNLOAD_DESCRIPTION = "Downloading Podcast";
+
 }
