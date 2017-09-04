@@ -469,6 +469,7 @@ public class MainInteractor {
         request.setTitle(trackID + MediaConstants.MP3_EXTENSION);
         request.setDescription(MediaConstants.DOWNLOAD_DESCRIPTION);
         /*The download directory is set to the package name by default, and the file name is trackID with ".mp3" extension*/
+        //TODO For time being we are assuming all the files as mp3, but it can be of any format. Need to get the format from server.
         request.setDestinationInExternalPublicDir(application.getPackageName(), trackID + MediaConstants.MP3_EXTENSION);
 
         DownloadManager downloadManager = (DownloadManager) application.getSystemService(DOWNLOAD_SERVICE);
