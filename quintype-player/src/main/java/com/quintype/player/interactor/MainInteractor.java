@@ -2,6 +2,7 @@ package com.quintype.player.interactor;
 
 import android.app.ActivityManager;
 import android.app.Application;
+import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -19,12 +21,15 @@ import com.quintype.player.R;
 import com.quintype.player.OnStreamServiceListener;
 import com.quintype.player.StreamService;
 import com.quintype.player.models.Audio;
+import com.quintype.player.utils.MediaConstants;
 import com.quintype.player.utils.StorageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
+import static android.content.Context.DOWNLOAD_SERVICE;
 
 /**
  * Created by akshaykoul on 04/07/17.
@@ -271,7 +276,7 @@ public class MainInteractor {
             int bufferValue = intent.getIntExtra(StreamService.BUFFER_UPDATE_VALUE, 0);
             presenter.updateBufferValue(bufferValue);
         } else
-            Log.d(TAG,"doing nothing");
+            Log.d(TAG, "doing nothing");
 
     }
 
@@ -456,5 +461,22 @@ public class MainInteractor {
         return streamService.isInitialized();
     }
 
+    public void downloadPodcast(String streamURL, Integer trackID) {
+        Uri downloadUri = Uri.parse(streamURL);
+
+        DownloadManager.Request request = new DownloadManager.Request(downloadUri);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setTitle(trackID + MediaConstants.MP3_EXTENSION);
+        request.setDescription(MediaConstants.DOWNLOAD_DESCRIPTION);
+        /*The download directory is set to the package name by default, and the file name is trackID with ".mp3" extension*/
+        //TODO For time being we are assuming all the files as mp3, but it can be of any format. Need to get the format from server.
+        request.setDestinationInExternalPublicDir(application.getPackageName(), trackID + MediaConstants.MP3_EXTENSION);
+
+        DownloadManager downloadManager = (DownloadManager) application.getSystemService(DOWNLOAD_SERVICE);
+        /*We are storing the download ID and track ID in a HashMap . We will be getting only the downloadID from the Intent of the broadcast receiver,
+        so to confirm which track is being downloaded we need this HashMap*/
+        long id = downloadManager.enqueue(request);
+        storage.addToDownloadManagerHistory(id, trackID);
+    }
 
 }
